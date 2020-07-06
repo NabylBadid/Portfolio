@@ -1,10 +1,30 @@
 {% extends "base.html.twig" %}
 
-{% block navbar %} {{ NABYL | upper }} {{ parent() }}  {% endblock %}
+{% block stylesheets %}
+    <link href="css/homeNavStyle.css" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-uppercase text-white font-weight-bold">Développeur web</h1>
+                    <hr class="divider my-4" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 font-weight-light mb-5">Je suis Nabyl Badid, développeur web back-end.</p>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{ path('portfolio')}}">Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
 
-    <h1> Bienvenue sur mon portfolio </h1>
-    
+{% block javascripts %}
+    {{ parent() }}
 
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 {% endblock %}

@@ -10,9 +10,9 @@ class PortfolioController extends AbstractController
     /**
      * @Route("/portfolio", name="portfolio")
      */
-    public function index()
+    public function portfolio()
     {
-        return $this->render('portfolio/index.html.twig', [
+        return $this->render('portfolio/portfolio.html.twig', [
             'controller_name' => 'PortfolioController',
         ]);
     }
@@ -23,5 +23,21 @@ class PortfolioController extends AbstractController
     public function home() 
     {
         return $this->render('portfolio/home.html.twig');
+    }
+
+    /**
+     * @Route("/about", name="about")
+     */
+    public function about() 
+    {
+        return $this->render('portfolio/about.html.twig');
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact() 
+    {
+        return $this->render('portfolio/contact.html.twig');
     }
 }
