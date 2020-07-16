@@ -42,6 +42,11 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,10 +77,21 @@ class User implements UserInterface
     }
 
     // Méthodes de l'interface (l'interface nous oblige à écrire toutes ses méthodes)
-    public function getRoles() 
-    {
-        return ['ROLE_USER'];
-    }
     public function getSalt() {}
     public function eraseCredentials() {}
-}
+
+    public function getRoles() 
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }}

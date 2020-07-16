@@ -30,6 +30,9 @@ class SecurityController extends AbstractController
 
             $user->setPassword($hash);
 
+            // Ajouter un rôle
+            // $user->setRoles(['ROLE_ADMIN']);
+
             $manager->persist($user);
             $manager->flush();
 
@@ -47,7 +50,7 @@ class SecurityController extends AbstractController
     public function login(SessionInterface $session)
     {
         $this->addFlash('login', 'Bienvenue');
-        
+
         return $this->render('security/login.html.twig', [
         ]);
     }

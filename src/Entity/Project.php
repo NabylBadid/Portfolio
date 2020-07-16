@@ -46,6 +46,12 @@ class Project
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Url()
+     */
+    private $urlSite;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -95,6 +101,18 @@ class Project
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUrlSite(): ?string
+    {
+        return $this->urlSite;
+    }
+
+    public function setUrlSite(string $urlSite): self
+    {
+        $this->urlSite = $urlSite;
 
         return $this;
     }

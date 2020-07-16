@@ -12,19 +12,11 @@
 
         {{ form_start(formProject) }}
             {{ form_widget(formProject) }}
+            {# {{ form_row(formProject.title) }}
+            {{ form_row(formProject.description) }}
+            {{ form_row(formProject.image) }} #}
         {{ form_end(formProject) }}
-
-        {# {{ form_start(formProject) }} 
-
-        <div class="form-group">
-            {{ form_row(formProject.title, {'label' : 'Titre du projet', 'attr' : {'placeholder' : "Titre du projet", 'class': 'form-control'}})}}
-        </div>
-        <div class="form-group">
-            {{ form_row(formProject.description, {'label' : 'Description du projet', 'attr' : {'placeholder' : "Description du projet", 'class': 'form-control'}})}}
-        </div>
-        <div class="form-group">
-            {{ form_row(formProject.image, {'label' : 'Image du projet', 'attr' : {'placeholder' : "Image du projet", 'class': 'form-control'}})}}
-        </div> #}
+        {{ form_errors(formProject) }}
 
         <button type="submit" class="btn formButton">
             {% if editMode %}
