@@ -10134,3 +10134,24 @@ header.masthead h1 {
 body {
   margin-top: 72px;
 }
+.formButton {
+  background-color: #f4623a;
+  color: #fff
+}
+/* h1 dans registration et login.html */
+.regCon {
+  padding-top: 40px;
+  text-align: center;
+}
+#portfolio-section {
+  padding-top: 80px;
+}
+.portfolio-item {
+display: table;
+}
+.portfolio-box {
+  display: table-cell;
+  vertical-align: top;
+}
+
+

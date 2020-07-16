@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{# {% form_theme formProject 'bootstrap_4_layout.html.twig' %} #}
+
+{% block body %}
+    <div class="container">
+        <h1> Suppresion du projet </h1>
+
+    {{ form_start(formProject) }} 
+
+    <div class="form-group">
+        {{ form_row(formProject.title, {'label' : 'Titre du projet', 'attr' : {'placeholder' : "Titre du projet", 'class': 'form-control'}})}}
+    </div>
+    <div class="form-group">
+        {{ form_row(formProject.description, {'label' : 'Description du projet', 'attr' : {'placeholder' : "Description du projet", 'class': 'form-control'}})}}
+    </div>
+    <div class="form-group">
+        {{ form_row(formProject.image, {'label' : 'Image du projet', 'attr' : {'placeholder' : "Image du projet", 'class': 'form-control'}})}}
+    </div>
+
+    <button type="submit" class="btn formButton">
+        supprimer le bouton 
+    </button>
+
+    {{ form_end(formProject) }}
+{% endblock %}

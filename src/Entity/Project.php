@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
@@ -19,16 +20,24 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=5, max=255,
+     * minMessage="Votre message doit contenir au minimum 5 caractères",
+     * maxMessage="Votre message doit contenir au maximum 255 caractères"
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=10,
+     * minMessage="Votre message doit contenir au minimum 5 caractères",
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $image;
 

@@ -1,12 +1,14 @@
 {
-    "type": "project",
+    "name": "Nabyl",
+    "description": "Project 5 formation",
+    "type": "website",
     "license": "proprietary",
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "fzaninotto/faker": "^1.9",
-        "sensio/framework-extra-bundle": "^5.1",
+        "sensio/framework-extra-bundle": "^5.5",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
         "symfony/dotenv": "5.1.*",

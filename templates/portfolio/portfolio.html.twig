@@ -1,16 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- Portfolio-->
-    <div id="portfolio">
-        <div class="container-fluid p-0">
-            <div class="row no-gutters">
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg">
+    <section class="page-section" id="portfolio-section">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mt-0"> Portfolio </h2>
+                <hr class="divider my-4">
+            </div>
+        </div>
+        <!-- Portfolio-->
+        <div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="row no-gutters">
+                    {% for project in projects %}
+                        <div class="col-lg-4 col-sm-6 portfolio-item">
+                            <a class="portfolio-box" href="http://webagencyp.com">
+                                <img class="img-fluid" src="{{ project.image }}" alt="" />
+                                <div class="portfolio-box-caption p-3">
+                                    <div class="project-category text-white-50">Category</div>
+                                    <div class="project-name">{{ project.title }}</div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+                {# <div class="col-lg-4 col-sm-6">
+                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/project_1.png">
                         <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="" />
                         <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
+                            <div class="project-category text-white-50">Web Agency</div>
+                            <div class="project-name">{{ projet. }}</div>
                         </div>
                     </a>
                 </div>
@@ -58,8 +81,4 @@
                             <div class="project-name">Project Name</div>
                         </div>
                     </a>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+                </div> #}
