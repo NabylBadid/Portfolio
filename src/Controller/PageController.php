@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProjectRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -26,5 +27,20 @@ class PageController extends AbstractController
     public function display($page) 
     {
         return $this->render('page/' . $page . '.html.twig');
+    }
+
+    /**
+     * @Route ("/phpinfo", name="phpinfo")
+     * @return void
+     */
+    public function phpInformation() 
+    {
+        ob_start();
+        phpinfo();
+        $phpinfo = ob_get_contents();
+        ob_end_clean();
+        return $this->render('page/phpinfo.html.twig', array(
+            'phpinfo'=> $phpinfo,
+        ));
     }
 }

@@ -35,7 +35,7 @@ class AdministrationController extends AbstractController
      * methods={"HEAD", "GET", "POST"}
      * )
      */
-    public function createModify(Project $project = null, Request $request, EntityManagerInterface $manager) 
+    public function create(Project $project = null, Request $request, EntityManagerInterface $manager) 
     {
         if (!$project) {
             $project = new Project();

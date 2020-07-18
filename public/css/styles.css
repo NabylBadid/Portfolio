@@ -10154,4 +10154,55 @@ display: table;
   vertical-align: top;
 }
 
-
+/* CSS Animation */
+body 
+{
+    margin: 0;
+    padding: 0;
+}
+.box 
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    overflow: hidden;
+    animation: reveal 2s linear forwards;
+}
+.box h1
+{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    text-transform: uppercase;
+}
+@keyframes reveal
+{
+    0%
+    {
+        width : 0px;
+        height: 0px;
+    }
+    30%
+    {
+        width : 600px;
+        height: 0px;
+    }
+    60%
+    {
+        width : 600px;
+        height: 160px;
+    }
+    90%
+    {
+        width : 600px;
+        height: 160px;
+    }
+    100%
+    {
+        width : 600px;
+        height: 160px;
+    }
+}

@@ -50,7 +50,7 @@ class Project
      * @ORM\Column(type="string", length=255)
      * @Assert\Url()
      */
-    private $urlSite;
+    // private $urlSite;
 
     public function getId(): ?int
     {
@@ -105,15 +105,15 @@ class Project
         return $this;
     }
 
-    public function getUrlSite(): ?string
-    {
-        return $this->urlSite;
-    }
+    // public function getUrlSite(): ?string
+    // {
+    //     return $this->urlSite;
+    // }
 
-    public function setUrlSite(string $urlSite): self
-    {
-        $this->urlSite = $urlSite;
+    // public function setUrlSite(string $urlSite): self
+    // {
+    //     $this->urlSite = $urlSite;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
