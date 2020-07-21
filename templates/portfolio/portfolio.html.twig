@@ -1,84 +1,53 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="page-section" id="portfolio-section">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="mt-0"> Portfolio </h2>
-                <hr class="divider my-4">
-            </div>
-        </div>
-        <!-- Portfolio-->
-        <div id="portfolio">
-            <div class="container-fluid p-0">
-                <div class="row no-gutters">
-                    {% for project in projects %}
-                        <div class="col-lg-4 col-sm-6 portfolio-item">
-                            <a class="portfolio-box" href="http://webagencyp.com">
-                                <img class="img-fluid" src="{{ project.image }}" alt="" />
-                                <div class="portfolio-box-caption p-3">
-                                    <div class="project-category text-white-50">Category</div>
-                                    <div class="project-name">{{ project.title }}</div>
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </section>
+	<section class="page-section" id="portfolio-section">
+		<div class="row justify-content-center">
+			<div class="col-lg-8 text-center">
+				<h2 class="mt-0">
+					Portfolio
+				</h2>
+				<hr class="divider my-4">
+			</div>
+		</div>
+		<!-- Portfolio-->
+		<div id="portfolio">
+			<div class="container-fluid p-0">
+				<div class="row no-gutters">
+					{% for project in projects %}
+						<div class="col-lg-4 col-sm-6 portfolio-item">
+							<a class="portfolio-box" href="http://webagencyp.com">
+								<img class="img-fluid" src="{{ project.image }}" alt=""/>
+								<div class="portfolio-box-caption p-3">
+									<div class="project-category text-white-50">Category</div>
+									<div class="project-name">{{ project.title }}</div>
+								</div>
+							</a>
+							<div>
+								<a href="{{ path('portfolio_like', {'id': project.id}) }}" class="btn btn-link js-like">
+									{% if app.user and project.isLikedByUser(app.user) %}
+										<i class="fas fa-thumbs-up"></i>
+									{% else %}
+										<i class="far fa-thumbs-up"></i>
+									{% endif %}
+									<span class="js-likes">{{ project.likes | length }}</span>
+									{% if app.user and project.isLikedByUser(app.user) %}
+									    <span class="js-label">Je n'aime plus</span>
+                                    {% else %}
+									    <span class="js-label">J'aime</span>
+                                    {% endif %}    
+								</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
-                {# <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/project_1.png">
-                        <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="" />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Web Agency</div>
-                            <div class="project-name">{{ projet. }}</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg">
-                        <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="" />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg">
-                        <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="" />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg">
-                        <img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="" />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg">
-                        <img class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt="" />
-                        <div class="portfolio-box-caption">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg">
-                        <img class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt="" />
-                        <div class="portfolio-box-caption p-3">
-                            <div class="project-category text-white-50">Category</div>
-                            <div class="project-name">Project Name</div>
-                        </div>
-                    </a>
-                </div> #}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="js/scripts.js"></script>
+{% endblock %}

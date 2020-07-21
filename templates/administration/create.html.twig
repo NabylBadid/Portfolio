@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formProject 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1> Création d'un projet </h1>
+
+        {{ form_start(formProject) }}
+            {# {{ form_widget(formProject) }} #}
+            {{ form_row(formProject.title) }}
+            {{ form_row(formProject.description) }}
+            {{ form_row(formProject.image) }}
+        {{ form_end(formProject) }}
+        {{ form_errors(formProject) }}
+
+        <button type="submit" class="btn formButton">Ajouter le projet</button>
+
+        {{ form_end(formProject) }}
+    </div>
+
+{% endblock %}
+
