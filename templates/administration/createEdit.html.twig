@@ -2,32 +2,27 @@
 
 {% form_theme formProject 'bootstrap_4_layout.html.twig' %}
 
+{% set title = "Création d'un projet" %}
+{% set inputButton = "Ajouter le projet" %}
+{% if editMode %}
+    {% set title = "Modification d'un projet" %}
+    {% set inputButton = "Modifier le projet" %}
+{% endif %}
+
 {% block body %}
-    <div class="container">
-        {% if editMode %}
-            <h1> Modification du projet </h1>
-        {% else %}
-            <h1> Création d'un projet </h1>
-        {% endif %}
-
-        {{ form_start(formProject) }}
-            {{ form_widget(formProject) }}
-            {# {{ form_row(formProject.title) }}
-            {{ form_row(formProject.description) }}
-            {{ form_row(formProject.image) }} #}
-        {{ form_end(formProject) }}
-        {{ form_errors(formProject) }}
-
-        <button type="submit" class="btn formButton">
-            {% if editMode %}
-                Modifier le projet
-            {% else %}
-                Ajouter le projet
-            {% endif %}
-        </button>
-
-        {{ form_end(formProject) }}
-    </div>
+    <section class="page-section">
+        <div class="container">
+            <h1>{{ title }}</h1>
+            {{ form_start(formProject) }}
+                {{ form_widget(formProject) }}
+                {# {{ form_row(formProject.title) }}
+                {{ form_row(formProject.description) }}
+                {{ form_row(formProject.image) }} #}
+            {{ form_errors(formProject) }}
+            <input type="submit" class="btn formButton" value="{{ inputButton }}" />
+            {{ form_end(formProject) }}
+        </div>
+    </section>
 
 {% endblock %}
 

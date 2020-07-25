@@ -1,54 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="pt-5"> Espace d'amnistration </h2>
-                <hr class="divider my-4">
+    <section class="page-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="pt-5"> Espace d'admnistration </h2>
+                    <hr class="divider my-4">
+                </div>
             </div>
+
+            <h2> Projets </h2>
+                {% for messages in app.flashes %}
+                {# ['add_project', 'update_project', 'delete_project'] #}
+                    <div class="alert alert-primary">
+                        {% for message in messages %}
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Date de création</th>
+                        <th>Url</th>
+                        <th>Likes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                    {% for project in projects %}
+                        <tbody>
+                            <tr>
+                                <th>{{ project.id }}</th>
+                                <td><a href="{{ path('portfolio_display', { 'id' : project.id }) }}">{{ project.title }}</a></td>
+                                <td>{{ project.description }}</td>
+                                <td>Créé le {{ project.createdAt | date('d/m/y/ H:i', timezone="Europe/Paris") }}</td>
+                                <td>{{ project.url }}</td>
+                                <td>{{ project.likes | length }}</td>
+                                <td>
+                                    <a href="{{ path('administration_edit', { 'id' : project.id }) }}">Modifier</a>
+                                    <a href="{{ path('administration_delete', { 'id' : project.id }) }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+            </table>
+            <a class="btn btn-primary newArticle" href="{{ path('administration_create') }}">Nouvel article</a>
         </div>
-
-        <h2> Projets </h2>
-
-        {% for messages in app.flashes %}
-            <div class="alert alert-success">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-        {% endfor %}
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Date de création</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-                {% for project in projects %}
-                    <tbody>
-                        <tr>
-                            <th>{{ project.id }}</th>
-                            <td><a href="{{ path('portfolio_display', { 'id' : project.id }) }}">{{ project.title }}</a></td>
-                            <td>{{ project.description }}</td>
-                            <td>Créé le {{ project.createdAt | date('d/m/y/ H:i', timezone="Europe/Paris") }}</td>
-                            <td>
-                                <a href="{{ path('administration_edit', { 'id' : project.id }) }}">Modifier</a>
-                                <a href="{{ path('administration_delete', { 'id' : project.id }) }}">Supprimer</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                {% endfor %}
-        </table>
-        <a class="btn btn-primary newArticle" href="{{ path('administration_create') }}">Nouveau article</a>
-    </div>
-
-    <pre>
-        {{ dump(app.user) }}
-    </pre>
+    </section>
 {% endblock %}
 

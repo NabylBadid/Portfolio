@@ -9,6 +9,12 @@
 				</h2>
 				<hr class="divider my-4">
 			</div>
+			{% if not app.user %}
+				<div class="alert alert-primary" role="alert">
+					Connectez-vous si vous souhaitez liker un de mes projets ! 
+					<a href="{{ path('security_login') }}">Se connecter</a>
+				</div>
+			{% endif %}
 		</div>
 		<!-- Portfolio-->
 		<div id="portfolio">
@@ -16,7 +22,7 @@
 				<div class="row no-gutters">
 					{% for project in projects %}
 						<div class="col-lg-4 col-sm-6 portfolio-item">
-							<a class="portfolio-box" href="http://webagencyp.com">
+							<a class="portfolio-box" href="{{ project.url }}" target="_blank">
 								<img class="img-fluid" src="{{ project.image }}" alt=""/>
 								<div class="portfolio-box-caption p-3">
 									<div class="project-category text-white-50">Category</div>

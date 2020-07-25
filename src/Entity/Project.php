@@ -32,7 +32,7 @@ class Project
     /**
      * @ORM\Column(type="text")
      * @Assert\Length(min=10,
-     * minMessage="Votre message doit contenir au minimum 5 caractères",
+     * minMessage="Votre message doit contenir au minimum 10 caractères",
      * )
      */
     private $description;
@@ -53,16 +53,18 @@ class Project
      */
     private $likes;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Url(
+     *  message = "L'url '{{ value }}' n'est pas une url valide.",
+     * )
+     */
+    private $url;
+
     public function __construct()
     {
         $this->likes = new ArrayCollection();
     }
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Url()
-     */
-    // private $urlSite;
 
     public function getId(): ?int
     {
@@ -117,19 +119,6 @@ class Project
         return $this;
     }
 
-    // public function getUrlSite(): ?string
-    // {
-    //     return $this->urlSite;
-    // }
-
-    // public function setUrlSite(string $urlSite): self
-    // {
-    //     $this->urlSite = $urlSite;
-
-    //     return $this;
-    // }
-
-
     /**
      * @return Collection|ProjectLike[]
      */
@@ -171,5 +160,17 @@ class Project
         }
 
         return false;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
+
+        return $this;
     }
 }

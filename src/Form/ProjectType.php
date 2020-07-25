@@ -17,7 +17,7 @@ class ProjectType extends AbstractType
             ->add('title', TextType::class)
             ->add('description', TextareaType::class)
             ->add('image', TextType::class)
-            // ->add('urlSite', TextType::class)
+            ->add('url', TextType::class)
         ;
     }
 

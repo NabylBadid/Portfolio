@@ -1,17 +1,17 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-
-    <div class="container">    
-        <article>
-            <h2>{{ project.title }}</h2>
-            <div class="metadata">écrit le {{ project.createdAt | date('d/m/Y')}} à {{ project.createdAt | date('H:i') }}</div>
-            <div class="content">
-                <img src="{{ project.image }}" alt="">
-                {{ project.description | raw }}
-            </div>
-            <a href="{{ project.urlSite}}" class="btn btn-primary">Visiter le site</a> 
-        </article>
-    </div>
-
+    <section class="page-section">
+        <div class="container">    
+            <article>
+                <h2>{{ project.title }}</h2>
+                <div class="metadata">écrit le {{ project.createdAt | date('d/m/Y')}} à {{ project.createdAt | date('H:i') }}</div>
+                <div class="content">
+                    <img src="{{ project.image }}" alt="Image du projet">
+                    {{ project.description | raw }}
+                </div>
+                <a href="{{ project.url }}" class="btn btn-primary" target="_blank">Visiter le site</a> 
+            </article>
+        </div>
+    </section>
 {% endblock %}

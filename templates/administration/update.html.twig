@@ -3,21 +3,17 @@
 {% form_theme formProject 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <h1> Modification du projet </h1>
+    <section class="page-section">
+        <div class="container">
+            <h1> Modification du projet </h1>
 
-        {{ form_start(formProject) }}
-            {{ form_widget(formProject) }}
-            {# {{ form_row(formProject.title) }}
-            {{ form_row(formProject.description) }}
-            {{ form_row(formProject.image) }} #}
-        {{ form_end(formProject) }}
-        {{ form_errors(formProject) }}
+            {{ form_start(formProject) }}
+                {{ form_widget(formProject) }}
+            <input type="submit" class="btn formButton" />
+            {{ form_errors(formProject) }}
 
-        <button type="submit" class="btn formButton">Modifier le projet</button>
-
-        {{ form_end(formProject) }}
-    </div>
-
+            {{ form_end(formProject) }}
+        </div>
+    </section>
 {% endblock %}
 

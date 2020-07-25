@@ -29,18 +29,18 @@ class PageController extends AbstractController
         return $this->render('page/' . $page . '.html.twig');
     }
 
-    /**
-     * @Route ("/phpinfo", name="phpinfo")
-     * @return void
-     */
-    public function phpInformation() 
-    {
-        ob_start();
-        phpinfo();
-        $phpinfo = ob_get_contents();
-        ob_end_clean();
-        return $this->render('page/phpinfo.html.twig', array(
-            'phpinfo'=> $phpinfo,
-        ));
-    }
+    // /**
+    //  * @Route ("/phpinfo", name="phpinfo")
+    //  * @return void
+    //  */
+    // public function phpInformation() 
+    // {
+    //     ob_start();
+    //     phpinfo();
+    //     $phpinfo = ob_get_contents();
+    //     ob_end_clean();
+    //     return $this->render('page/phpinfo.html.twig', array(
+    //         'phpinfo'=> $phpinfo,
+    //     ));
+    // }
 }

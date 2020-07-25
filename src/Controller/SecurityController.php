@@ -58,5 +58,8 @@ class SecurityController extends AbstractController
     /**
      * @Route("/logout", name="security_logout")
      */
-    public function logout() {}
+    public function logout() 
+    {
+        $this->addFlash('logout', 'À bientôt');
+    }
 }

@@ -10140,11 +10140,7 @@ body {
 }
 /* h1 dans registration et login.html */
 .regCon {
-  padding-top: 40px;
   text-align: center;
-}
-#portfolio-section {
-  padding-top: 80px;
 }
 .portfolio-item {
 display: table;
@@ -10155,6 +10151,7 @@ display: table;
 }
 
 /* CSS Animation */
+
 body 
 {
     margin: 0;
@@ -10205,4 +10202,12 @@ body
         width : 600px;
         height: 160px;
     }
+}
+
+/* Body margin top under 992px */
+
+@media (max-width: 992px) {
+  body {
+    margin-top: 72px;
+  }
 }
