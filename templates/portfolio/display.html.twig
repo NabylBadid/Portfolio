@@ -4,13 +4,14 @@
     <section class="page-section">
         <div class="container">    
             <article>
-                <h2>{{ project.title }}</h2>
-                <div class="metadata">écrit le {{ project.createdAt | date('d/m/Y')}} à {{ project.createdAt | date('H:i') }}</div>
-                <div class="content">
-                    <img src="{{ project.image }}" alt="Image du projet">
-                    {{ project.description | raw }}
+                <h1 class="text-center">{{ project.title }}</h1>
+			    <hr class="divider my-4 mb-5">
+                <div class="metadata font-italic mb-5"><i class="far fa-clock"></i> écrit le {{ project.createdAt | date('d/m/Y')}} à {{ project.createdAt | date('H:i') }}</div>
+                <img src="{{ project.image }}" alt="Image du projet" class="img-fluid mb-5">
+                <div class="content mb-5">{{ project.description | raw | e('html') }}</div>
+                <div class="text-center">
+                    <a href="{{ project.url }}" class="btn btn-primary" target="_blank">Visiter le site</a> 
                 </div>
-                <a href="{{ project.url }}" class="btn btn-primary" target="_blank">Visiter le site</a> 
             </article>
         </div>
     </section>

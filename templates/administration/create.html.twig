@@ -8,14 +8,12 @@
             <h1> Création d'un projet </h1>
 
             {{ form_start(formProject) }}
-                {{ form_row(formProject.title) }}
-                {{ form_row(formProject.description) }}
-                {{ form_row(formProject.image) }}
-                {{ form_row(formProject.url) }}
-            {{ form_errors(formProject) }}
-
-            <button type="submit" class="btn formButton">Ajouter le projet</button>
-
+                {{ form_row(formProject.title) | e('js')}}
+                {{ form_row(formProject.description)| e('js') }}
+                {{ form_row(formProject.image)| e('js') }}
+                {{ form_row(formProject.url)| e('js') }}
+                {{ form_errors(formProject) }}
+                <input type="submit" class="btn formButton" />
             {{ form_end(formProject) }}
         </div>
     </section>

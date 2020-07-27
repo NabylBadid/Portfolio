@@ -8,10 +8,9 @@
             <h1> Modification du projet </h1>
 
             {{ form_start(formProject) }}
-                {{ form_widget(formProject) }}
-            <input type="submit" class="btn formButton" />
-            {{ form_errors(formProject) }}
-
+                {{ form_widget(formProject) | e('js')}}
+                <input type="submit" class="btn formButton" />
+                {{ form_errors(formProject) }}
             {{ form_end(formProject) }}
         </div>
     </section>

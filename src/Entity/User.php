@@ -54,6 +54,17 @@ class User implements UserInterface
      */
     private $likes;
 
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\IsTrue(message="Vous devez cocher cette case")
+     */
+    private $RGPD;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
     public function __construct()
     {
         $this->likes = new ArrayCollection();
@@ -137,4 +148,29 @@ class User implements UserInterface
         }
 
         return $this;
-    }}
+    }
+
+    public function getRGPD(): ?bool
+    {
+        return $this->RGPD;
+    }
+
+    public function setRGPD(bool $RGPD): self
+    {
+        $this->RGPD = $RGPD;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+}

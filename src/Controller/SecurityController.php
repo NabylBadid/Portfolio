@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,20 +28,22 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $user->getPassword();
             $hash = $encoder->encodePassword($user, $plainPassword);
-
             $user->setPassword($hash);
+            
+            $user->setCreatedAt(new DateTime());
 
+            $this->addFLash('registration', 'Vous vous êtes correctement inscrit !');
             // Ajouter un rôle
             // $user->setRoles(['ROLE_ADMIN']);
 
             $manager->persist($user);
             $manager->flush();
 
-            return $this->redirectToRoute('security_login');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('security/registration.html.twig', [
-            'form' => $form->createView()
+            'formLogin' => $form->createView()
         ]);
     }
 
