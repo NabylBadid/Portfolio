@@ -6,7 +6,8 @@
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
-/vendor/
+# /vender/
+# j'ai enleve le dossier vendor pour quil puisse etre pushé#
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
